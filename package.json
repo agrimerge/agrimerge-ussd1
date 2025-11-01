@@ -1,0 +1,22 @@
+{
+  "name": "agrimerge-ussd",
+  "version": "1.0.0",
+  "description": "USSD service for AGRIMERGE",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ussd",
+    "agrimerge",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "ioredis": "^5.4.1"
+  }
+}
