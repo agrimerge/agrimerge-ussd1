@@ -2,7 +2,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Redis = require('ioredis');
-const redis = new Redis('redis://default:AUDOAAIncDJiNTljNTUyMGEyZTQ0ZTk5YWI3MzViOWVlMTNiY2FmMHAyMTY1OTA@normal-hen-16590.upstash.io:6379', { tls: {} });
+const redis = new Redis({
+  host: 'normal-hen-16590.upstash.io',
+  port: 6379,
+  password: 'AUDOAAIncDJiNTljNTUyMGEyZTQ0ZTk5YWI3MzViOWVlMTNiY2FmMHAyMTY1OTA',
+  tls: {}  // Required for secure connection
+});
+
+redis.ping()
+  .then(res => console.log('Redis connected:', res))
+  .catch(err => console.error('Redis error:', err));
 
 const app = express();
 app.use(bodyParser.json());
