@@ -49,14 +49,22 @@ const locales = {
     reg_success: 'Registration successful! 👏\nYour PIN: {pin}\nPress 1 to go to Main Menu',
     login_enter_pin: 'Enter your PIN:',
     login_incorrect_pin: 'Invalid PIN. Please try again. ({attempts} attempts left)',
-    login_too_many_attempts: 'Too many incorrect attempts. Please try again later.',
+    login_too_many_attempts: 'Too many incorrect attempts. Please try again later.\nDial *123# to start again.',
     login_user_not_found: 'User not found. Please register first.',
-    main_menu: 'Main Menu\n1. Buy Seeds & Fertilizers\n2. Sell Produce\n3. Weather Updates\n4. Farming Tips\n5. Support / Help\n0. Exit',
+    main_menu: 'Main Menu\n1. Sell Produce\n2. Buy Produce\n3. Market Prices\n4. Wallet & Pay\n5. Farming Tips\n6. My Orders\n7. Sent Services\n8. Support / Help\n9. Settings\n0. Exit',
     sell_not_farmer: 'Only farmers can sell produce. Your user type is {userType}.',
+    // New menu items
+    market_prices_under_dev: 'Market Prices feature is under development. Please try again later.',
+    wallet_under_dev: 'Wallet & Pay feature is under development. Please try again later.',
+    orders_under_dev: 'My Orders feature is under development. Please try again later.',
+    sent_services_under_dev: 'Sent Services feature is under development. Please try again later.',
+    settings_under_dev: 'Settings feature is under development. Please try again later.',
+
     buy_menu: 'Buy Seeds & Fertilizers\n1. Seeds\n2. Fertilizers\n3. Tools\n0. Back',
     sell_menu: 'Sell Produce\n1. Maize\n2. Beans\n3. Potatoes\n4. Cassava\n5. Vegetables\n6. Other\n0. Back',
     tips_menu: 'Farming Tips\n1. Maize Tips\n2. Beans Tips\n3. General Tips\n0. Back',
-    support_menu: 'Support / Help\nSelect category:',
+    support_menu: 'For help, please call or SMS 12345.\n\n0. Back to Main Menu',
+    buy_menu_expanded: 'Buy Seeds & Fertilizers\n1. Seeds\n2. Fertilizers\n3. Tools\n4. Food Produce\n0. Back',
     buy_seeds_menu: 'Select Seeds:\n1. Maize Seeds (1500 RWF/kg)\n2. Bean Seeds (2000 RWF/kg)\n0. Back',
     buy_fertilizers_menu: 'Select Fertilizer:\n1. NPK (800 RWF/kg)\n2. Urea (750 RWF/kg)\n3. DAP (850 RWF/kg)\n0. Back',
     buy_tools_menu: 'Select Tool:\n1. Hoe (5000 RWF)\n2. Panga (4500 RWF)\n3. Sprayer (15000 RWF)\n0. Back',
@@ -92,14 +100,22 @@ const locales = {
     reg_success: 'Kwiyandikisha byagenze neza! 👏\nUmubare wanyu w\'ibanga: {pin}\nKanda 1 ujye ahabanza',
     login_enter_pin: 'Andika umubare wanyu w\'ibanga:',
     login_incorrect_pin: 'Umubare w\'ibanga siwo. Mwongere mugerageze. (Hasigaye uburyo {attempts})',
-    login_too_many_attempts: 'Mwagerageje kenshi. Mwongere nyuma.',
+    login_too_many_attempts: 'Mwagerageje kenshi. Mwongere mugerageze nyuma.\nAndika *123# wongere utangire.',
     login_user_not_found: 'Konti yawe ntibonetse. Banza wiyandikishe.',
-    main_menu: 'Ahabanza\n1. Gura Imbuto & Ifumbire\n2. Gurisha Umusaruro\n3. Amakuru y\'Ikirere\n4. Inama z\'Ubuhinzi\n5. Ubufasha\n0. Sohora',
+    main_menu: 'Ahabanza\n1. Gurisha umusaruro\n2. Gura umusaruro\n3. Ibiciro ku isoko\n4. Ikofi & Kwishyura\n5. Inama\n6. Ibyo watumije\n7. Serivisi z\'uwoherejwe\n8. Ubufasha\n9. Igenamiterere\n0. Sohora',
     sell_not_farmer: 'Abahinzi bonyine nibo bemerewe kugurisha umusaruro. Wiyandikishije nk\'uri: {userType}.',
+    // New menu items
+    market_prices_under_dev: 'Serivisi y\'Ibiciro ku isoko iracyakorwa. Mwongere mugerageze nyuma.',
+    wallet_under_dev: 'Serivisi y\'Ikofi & Kwishyura iracyakorwa. Mwongere mugerageze nyuma.',
+    orders_under_dev: 'Serivisi y\'Ibyo watumije iracyakorwa. Mwongere mugerageze nyuma.',
+    sent_services_under_dev: 'Serivisi z\'uwoherejwe ziracyakorwa. Mwongere mugerageze nyuma.',
+    settings_under_dev: 'Serivisi y\'Igenamiterere iracyakorwa. Mwongere mugerageze nyuma.',
+
     buy_menu: 'Gura Imbuto & Ifumbire\n1. Imbuto\n2. Ifumbire\n3. Ibikoresho\n0. Subira inyuma',
     sell_menu: 'Gurisha Umusaruro\n1. Ibigori\n2. Ibishyimbo\n3. Ibirayi\n4. Imyumbati\n5. Imboga\n6. Ibindi\n0. Subira inyuma',
     tips_menu: 'Inama z\'Ubuhinzi\n1. Inama ku bigori\n2. Inama ku bishyimbo\n3. Inama rusange\n0. Subira inyuma',
-    support_menu: 'Ubufasha\nHitamo icyiciro:',
+    support_menu: 'Ukeneye ubufasha, hamagara cyangwa wohereze ubutumwa kuri 12345.\n\n0. Subira ahabanza',
+    buy_menu_expanded: 'Gura Imbuto & Ifumbire\n1. Imbuto\n2. Ifumbire\n3. Ibikoresho\n4. Ibiribwa\n0. Subira inyuma',
     buy_seeds_menu: 'Hitamo Imbuto:\n1. Imbuto y\'ibigori (1500 RWF/kg)\n2. Imbuto y\'ibishyimbo (2000 RWF/kg)\n0. Subira inyuma',
     buy_fertilizers_menu: 'Hitamo Ifumbire:\n1. NPK (800 RWF/kg)\n2. Urea (750 RWF/kg)\n3. DAP (850 RWF/kg)\n0. Subira inyuma',
     buy_tools_menu: 'Hitamo Igikoresho:\n1. Isuka (5000 RWF)\n2. Umuhoro (4500 RWF)\n3. Igitera umuti (15000 RWF)\n0. Subira inyuma',
@@ -107,6 +123,7 @@ const locales = {
     buy_confirm: 'Emeza ibyo ugura:\n{quantity} bya {item} kuri {totalPrice} RWF.\n\n1. Emeza\n2. Hagarika',
     buy_order_confirmed: 'Ibyo mwaguraga byemejwe! Murahita mwakira ubutumwa bugufi buriho amakuru yo kubifata. Kanda 1 usubire ahabanza.',
     buy_order_cancelled: 'Ibyo mwaguraga byahagaritswe. Kanda 1 usubire ahabanza.',
+    buy_food_menu: 'Hitamo Ibiribwa:\n1. Umuceri (1000 RWF/kg)\n2. Ingano (900 RWF/kg)\n3. Amasaka (700 RWF/kg)\n0. Subira inyuma',
     back_to_main_menu: 'Ugarutse ahabanza...',
     sell_enter_quantity: 'Andika ingano mu biro (kg) (Urugero: 50):\n0. Subira inyuma',
     sell_enter_price: 'Andika igiciro kuri kg mu RWF (Urugero: 300):\n0. Subira inyuma',
@@ -264,11 +281,7 @@ async function handleUSSD(session, input, phoneNumber) {
           responseMessage = t(session.lang, 'main_menu');
         } else {
           switch (input) {
-            case '1':
-              session.stage = 'BUY_MENU';
-              responseMessage = t(session.lang, 'buy_menu');
-              break;
-            case '2': {
+            case '1': { // 1. Gurisha umusaruro (Sell Produce)
               if (!userExists) {
                 responseType = 'END';
                 responseMessage = t(session.lang, 'user_not_found');
@@ -284,18 +297,47 @@ async function handleUSSD(session, input, phoneNumber) {
               }
               break;
             }
-            case '3': // Weather
-              responseMessage = await handleWeather(session.lang, userExists);
+            case '2': // 2. Gura umusaruro (Buy Produce)
+              session.stage = 'BUY_MENU';
+              responseMessage = t(session.lang, 'buy_menu_expanded'); // Use expanded menu
+              break;
+            case '3': // 3. Ibiciro ku isoko (Market Prices)
+              responseMessage = t(session.lang, 'market_prices_under_dev');
               session.stage = 'MAIN_MENU_REDIRECT';
               break;
-            case '4':
+            case '4': // 4. Ikofi & Kwishyura (Wallet & Pay)
+              responseMessage = t(session.lang, 'wallet_under_dev');
+              session.stage = 'MAIN_MENU_REDIRECT';
+              break;
+            case '5': // 5. Inama (Farming Tips)
               session.stage = 'TIPS_MENU';
               responseMessage = t(session.lang, 'tips_menu');
               break;
-            case '5':
+            case '6': // 6. Ibyo watumije (My Orders)
+              responseMessage = t(session.lang, 'orders_under_dev');
+              session.stage = 'MAIN_MENU_REDIRECT';
+              break;
+            case '7': // 7. Serivisi z'uwoherejwe (Sent Services)
+              responseMessage = t(session.lang, 'sent_services_under_dev');
+              session.stage = 'MAIN_MENU_REDIRECT';
+              break;
+            case '8': // 8. Ubufasha (Support / Help)
               session.stage = 'SUPPORT_MENU';
               responseMessage = t(session.lang, 'support_menu');
               break;
+            case '9': // 9. Igenamiterere (Settings)
+              responseMessage = t(session.lang, 'settings_under_dev');
+              session.stage = 'MAIN_MENU_REDIRECT';
+              break;
+            // Original case 3 (Weather Updates) is now removed from the main menu
+            // If you want to re-add weather, you'll need to find a new spot for it.
+            // For now, it's not accessible from this main menu.
+            /*
+            case 'X': // Placeholder for where Weather might go if re-added
+              responseMessage = await handleWeather(session.lang, userExists);
+              session.stage = 'MAIN_MENU_REDIRECT';
+              break;
+            */
             case '0':
               responseType = 'END';
               responseMessage = t(session.lang, 'exit_message');
@@ -317,6 +359,7 @@ async function handleUSSD(session, input, phoneNumber) {
       case 'BUY_SEEDS_MENU':
       case 'BUY_FERTILIZERS_MENU':
       case 'BUY_TOOLS_MENU':
+      case 'BUY_FOOD_MENU': // New stage for food items
       case 'BUY_ENTER_QUANTITY':
       case 'BUY_CONFIRM':
       case 'BUY_COMPLETE':
@@ -339,8 +382,13 @@ async function handleUSSD(session, input, phoneNumber) {
 
       // SUPPORT_MENU fallback
       case 'SUPPORT_MENU':
-        session.stage = 'MAIN_MENU';
-        responseMessage = t(session.lang, 'main_menu');
+        if (input === '0') {
+          session.stage = 'MAIN_MENU';
+          responseMessage = t(session.lang, 'main_menu');
+        } else {
+          // Show the support message again if the input is not '0'
+          responseMessage = t(session.lang, 'support_menu');
+        }
         break;
 
       default:
@@ -519,7 +567,7 @@ function handleBuyFlow(session, input, lang) {
     switch (session.stage) {
       case 'BUY_MENU':
         if (!input) {
-          responseMessage = t(lang, 'buy_menu');
+          responseMessage = t(lang, 'buy_menu_expanded'); // Use expanded menu
         } else if (input === '1') {
           session.stage = 'BUY_SEEDS_MENU';
           responseMessage = t(lang, 'buy_seeds_menu');
@@ -529,6 +577,9 @@ function handleBuyFlow(session, input, lang) {
         } else if (input === '3') {
           session.stage = 'BUY_TOOLS_MENU';
           responseMessage = t(lang, 'buy_tools_menu');
+        } else if (input === '4') { // New option for Food Produce
+          session.stage = 'BUY_FOOD_MENU';
+          responseMessage = t(lang, 'buy_food_menu');
         } else if (input === '0') {
           session.stage = 'MAIN_MENU';
           responseMessage = t(lang, 'main_menu');
@@ -540,6 +591,7 @@ function handleBuyFlow(session, input, lang) {
       case 'BUY_SEEDS_MENU':
       case 'BUY_FERTILIZERS_MENU':
       case 'BUY_TOOLS_MENU': {
+      case 'BUY_FOOD_MENU': { // Handle selection from the new food menu
         const currentMenu = session.stage;
         if (!input) {
           responseMessage = t(lang, currentMenu.toLowerCase());
@@ -690,9 +742,11 @@ function handleSellFlow(session, input, lang) {
           redis.lpush('listings', JSON.stringify(listing)).catch(err => console.error('redis lpush err', err));
           session.stage = 'SELL_COMPLETE';
           responseMessage = t(lang, 'sell_listing_successful', { quantity: session.data.sellQuantity, crop: cropName });
-        } else {
+        } else if (input === '2') {
           session.stage = 'SELL_COMPLETE';
           responseMessage = t(lang, 'sell_listing_cancelled');
+        } else {
+          responseMessage = `${t(lang, 'invalid_option')}\n${t(lang, 'sell_confirm_listing', { crop: cropName, quantity: session.data.sellQuantity, price: session.data.sellPrice })}`;
         }
         break;
       }
@@ -777,4 +831,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`USSD webhook server listening on port ${PORT}`);
 });
+
 
