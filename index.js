@@ -81,6 +81,11 @@ const locales = {
     weather_display: 'Weather for {district}:\n{description}, {temp}°C.\n\nPress 0 for Main Menu.',
     weather_error: 'Could not get weather data. Please try again later.\nPress 0 for Main Menu.',
     weather_no_location: 'Your location is not set. Please register again to set it.\nPress 0 for Main Menu.',
+
+    // Market prices
+    market_menu: 'Select crop for market prices:\n1. Maize\n2. Beans\n3. Irish Potatoes\n0. Back to Main Menu',
+    market_price_details: 'Market price for {crop}:\nAverage price: {price} RWF/kg\nSupply: {supply}\nDemand: {demand}\nLast updated: {updated}\n\n0. Back to Main Menu',
+    market_price_not_found: 'No market data found for that selection. Press 0 to return.',
   },
   rw: {
     lang_selection: 'Hitamo ururimi rwawe:\n1. Kinyarwanda\n2. Icyongereza\n3. Français',
@@ -102,7 +107,7 @@ const locales = {
     login_incorrect_pin: 'Umubare w\'ibanga siwo. Mwongere mugerageze. (Hasigaye uburyo {attempts})',
     login_too_many_attempts: 'Mwagerageje kenshi. Mwongere mugerageze nyuma.\nAndika *123# wongere utangire.',
     login_user_not_found: 'Konti yawe ntibonetse. Banza wiyandikishe.',
-    main_menu: 'Ahabanza\n1. Gurisha umusaruro\n2. Gura umusaruro\n3. Ibiciro ku isoko\n4. Ikofi & Kwishyura\n5. Inama\n6. Ibyo watumije\n7. Serivisi z\'uwoherejwe\n8. Ubufasha\n9. Igenamiterere\n0. Sohora',
+    main_menu: 'Ahabanza\n1. Gurisha umusaruro\n2. Gura umusaruro\n3. Ibiciro ku isoko\n4. Ikofi & Kwishyura\n5. Inama\n6. Ibyo watumije\n7. Serivisi z\'uwoherejwe\n8. Ubufasha\n9. Igenamiterere\n0. Sohoka',
     sell_not_farmer: 'Abahinzi bonyine nibo bemerewe kugurisha umusaruro. Wiyandikishije nk\'uri: {userType}.',
     // New menu items
     market_prices_under_dev: 'Serivisi y\'Ibiciro ku isoko iracyakorwa. Mwongere mugerageze nyuma.',
@@ -133,6 +138,11 @@ const locales = {
     weather_display: 'Iteganyagihe rya {district}:\n{description}, {temp}°C.\n\nKanda 0 usubire ahabanza.',
     weather_error: 'Amakuru y\'iteganyagihe ntiyabonetse. Mwongere mugerageze nyuma.\nKanda 0 usubire ahabanza.',
     weather_no_location: 'Aho muherereye ntihanditse. Mwongere mwiyandikishe kugirango muhashyire.\nKanda 0 usubire ahabanza.',
+
+    // Market prices (Kinyarwanda)
+    market_menu: 'Hitamo igihingwa urebe ibiciro:\n1. Ibigori\n2. Ibishyimbo\n3. Ibirayi\n0. Subira ahabanza',
+    market_price_details: 'Igiciro kuri {crop}:\nIgiciro rusange: {price} RWF/kg\nItangwa: {supply}\nGusabwa: {demand}\nIgihe cyavuguruwe: {updated}\n\n0. Subira ahabanza',
+    market_price_not_found: 'Nta makuru y\'isoko abonetse kuri icyo gihingwa. Kanda 0 usubire.',
   },
   fr: {
     lang_selection: 'Veuillez sélectionner votre langue:\n1. Kinyarwanda\n2. English\n3. Français',
@@ -143,6 +153,11 @@ const locales = {
     main_menu: 'Menu Principal\n1. Acheter semences & engrais\n2. Vendre produits\n3. Météo\n4. Conseils agricoles\n5. Aide\n0. Quitter',
     weather_display: 'Météo pour {district}:\n{description}, {temp}°C.\n\nAppuyez sur 0 pour le menu principal.',
     weather_error: 'Impossible d\'obtenir les données météo. Veuillez réessayer plus tard.\nAppuyez sur 0 pour le menu principal.',
+
+    // Market prices (French)
+    market_menu: 'Choisissez la culture pour les prix de marché:\n1. Maïs\n2. Haricots\n3. Pommes de terre\n0. Retour au menu principal',
+    market_price_details: 'Prix du marché pour {crop}:\nPrix moyen: {price} RWF/kg\nOffre: {supply}\nDemande: {demand}\nDernière mise à jour: {updated}\n\n0. Retour au menu principal',
+    market_price_not_found: 'Aucune donnée de marché trouvée pour cette sélection. Appuyez sur 0 pour revenir.',
   },
 };
 
@@ -153,6 +168,43 @@ const t = (lang, key, params = {}) => {
     text = text.replace(new RegExp(`{${p}}`, 'g'), params[p]);
   }
   return text;
+};
+
+// Simple market prices dataset (could be replaced by an API later)
+const MARKET_PRICES = {
+  '1': {
+    id: '1',
+    crop: 'Maize',
+    crop_rw: 'Ibigori',
+    crop_fr: 'Maïs',
+    price: 300, // RWF/kg - example average
+    supply: 'Medium',
+    demand: 'High',
+    updated: '2025-11-13',
+    notes: 'Expect higher prices in dry season.',
+  },
+  '2': {
+    id: '2',
+    crop: 'Beans',
+    crop_rw: 'Ibishyimbo',
+    crop_fr: 'Haricots',
+    price: 500,
+    supply: 'Low',
+    demand: 'High',
+    updated: '2025-11-12',
+    notes: 'Local varieties fetch premium price.',
+  },
+  '3': {
+    id: '3',
+    crop: 'Irish Potatoes',
+    crop_rw: 'Ibirayi',
+    crop_fr: 'Pommes de terre',
+    price: 250,
+    supply: 'High',
+    demand: 'Medium',
+    updated: '2025-11-10',
+    notes: 'Prices vary by region and grade.',
+  },
 };
 
 // --- Helpers ---
@@ -301,9 +353,9 @@ async function handleUSSD(session, input, phoneNumber) {
               session.stage = 'BUY_MENU';
               responseMessage = t(session.lang, 'buy_menu_expanded'); // Use expanded menu
               break;
-            case '3': // 3. Ibiciro ku isoko (Market Prices)
-              responseMessage = t(session.lang, 'market_prices_under_dev');
-              session.stage = 'MAIN_MENU_REDIRECT';
+            case '3': // 3. Ibiciro ku isoko (Market Prices) - now active
+              session.stage = 'MARKET_MENU';
+              responseMessage = t(session.lang, 'market_menu');
               break;
             case '4': // 4. Ikofi & Kwishyura (Wallet & Pay)
               responseMessage = t(session.lang, 'wallet_under_dev');
@@ -329,15 +381,6 @@ async function handleUSSD(session, input, phoneNumber) {
               responseMessage = t(session.lang, 'settings_under_dev');
               session.stage = 'MAIN_MENU_REDIRECT';
               break;
-            // Original case 3 (Weather Updates) is now removed from the main menu
-            // If you want to re-add weather, you'll need to find a new spot for it.
-            // For now, it's not accessible from this main menu.
-            /*
-            case 'X': // Placeholder for where Weather might go if re-added
-              responseMessage = await handleWeather(session.lang, userExists);
-              session.stage = 'MAIN_MENU_REDIRECT';
-              break;
-            */
             case '0':
               responseType = 'END';
               responseMessage = t(session.lang, 'exit_message');
@@ -352,6 +395,12 @@ async function handleUSSD(session, input, phoneNumber) {
       case 'MAIN_MENU_REDIRECT':
         session.stage = 'MAIN_MENU';
         responseMessage = t(session.lang, 'main_menu');
+        break;
+
+      // MARKET PRICES flow
+      case 'MARKET_MENU':
+      case 'MARKET_CROP_DETAILS':
+        ({ responseMessage, responseType, session } = handleMarketFlow(session, input, session.lang));
         break;
 
       // BUY flow
@@ -559,6 +608,74 @@ async function handleLogin(session, input, lang, userExists) {
   return { responseMessage, responseType, session };
 }
 
+// --- Market Prices Flow ---
+function handleMarketFlow(session, input, lang) {
+  let responseMessage = '';
+  let responseType = 'CON';
+  try {
+    switch (session.stage) {
+      case 'MARKET_MENU':
+        if (!input) {
+          responseMessage = t(lang, 'market_menu');
+        } else if (input === '0') {
+          session.stage = 'MAIN_MENU';
+          responseMessage = t(lang, 'main_menu');
+        } else if (MARKET_PRICES[input]) {
+          session.data.marketSelection = input;
+          session.stage = 'MARKET_CROP_DETAILS';
+          // Fallthrough to show details immediately
+          const mp = MARKET_PRICES[input];
+          const cropName = (lang === 'rw') ? (mp.crop_rw || mp.crop) : (lang === 'fr' ? (mp.crop_fr || mp.crop) : mp.crop);
+          responseMessage = t(lang, 'market_price_details', {
+            crop: cropName,
+            price: mp.price,
+            supply: mp.supply,
+            demand: mp.demand,
+            updated: mp.updated,
+          });
+        } else {
+          responseMessage = `${t(lang, 'invalid_option')}\n${t(lang, 'market_menu')}`;
+        }
+        break;
+
+      case 'MARKET_CROP_DETAILS':
+        // In details view, '0' returns to main menu
+        if (input === '0') {
+          session.stage = 'MAIN_MENU';
+          responseMessage = t(lang, 'main_menu');
+        } else {
+          // if user presses any other key, show the details again for their selection if present
+          const sel = session.data.marketSelection;
+          if (sel && MARKET_PRICES[sel]) {
+            const mp = MARKET_PRICES[sel];
+            const cropName = (lang === 'rw') ? (mp.crop_rw || mp.crop) : (lang === 'fr' ? (mp.crop_fr || mp.crop) : mp.crop);
+            responseMessage = t(lang, 'market_price_details', {
+              crop: cropName,
+              price: mp.price,
+              supply: mp.supply,
+              demand: mp.demand,
+              updated: mp.updated,
+            });
+          } else {
+            responseMessage = t(lang, 'market_price_not_found');
+          }
+        }
+        break;
+
+      default:
+        responseType = 'END';
+        responseMessage = t(lang, 'generic_error');
+        session.stage = 'WELCOME';
+        break;
+    }
+  } catch (err) {
+    console.error('handleMarketFlow error:', err);
+    responseType = 'END';
+    responseMessage = t(lang, 'generic_error');
+  }
+  return { responseMessage, responseType, session };
+}
+
 // --- Buy Flow ---
 function handleBuyFlow(session, input, lang) {
   let responseMessage = '';
@@ -590,17 +707,19 @@ function handleBuyFlow(session, input, lang) {
 
       case 'BUY_SEEDS_MENU':
       case 'BUY_FERTILIZERS_MENU':
-      case 'BUY_TOOLS_MENU': {
-      case 'BUY_FOOD_MENU': { // Handle selection from the new food menu
+      case 'BUY_TOOLS_MENU':
+      case 'BUY_FOOD_MENU': {
         const currentMenu = session.stage;
         if (!input) {
-          responseMessage = t(lang, currentMenu.toLowerCase());
+          // Map stage name to locale key if exists
+          // Safe fallback to buy_menu
+          responseMessage = t(lang, currentMenu.toLowerCase()) || t(lang, 'buy_menu');
         } else if (input === '0') {
           session.stage = 'BUY_MENU';
           responseMessage = t(lang, 'buy_menu');
         } else {
           // ITEMS mapping expected: ITEMS['BUY_SEEDS_MENU'] = { '1': { name, name_rw, price, unit }, ... }
-          if (ITEMS[currentMenu] && ITEMS[currentMenu][input]) {
+          if (ITEMS && ITEMS[currentMenu] && ITEMS[currentMenu][input]) {
             session.data.buyItem = ITEMS[currentMenu][input];
             session.stage = 'BUY_ENTER_QUANTITY';
             responseMessage = t(lang, 'buy_enter_quantity');
